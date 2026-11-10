@@ -1,0 +1,10 @@
+import { Router } from 'express';
+import { createRequest, mine, received, updateRequest } from '../controllers/requestController.js';
+import { authenticate } from '../middleware/auth.js';
+const router = Router();
+router.use(authenticate);
+router.post('/', createRequest);
+router.get('/mine', mine);
+router.get('/received', received);
+router.patch('/:id', updateRequest);
+export default router;

@@ -1,0 +1,11 @@
+import { Router } from 'express';
+import { summary, allListings, setListingStatus, allReports, updateReport } from '../controllers/adminController.js';
+import { authenticate, requireAdmin } from '../middleware/auth.js';
+const router = Router();
+router.use(authenticate, requireAdmin);
+router.get('/summary', summary);
+router.get('/listings', allListings);
+router.patch('/listings/:id/status', setListingStatus);
+router.get('/reports', allReports);
+router.patch('/reports/:id', updateReport);
+export default router;
